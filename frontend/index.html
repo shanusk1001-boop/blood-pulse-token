@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Blood Pulse — Find Blood</title>
@@ -10,6 +10,73 @@
   <main class="container">
     <h1>Blood Pulse — Emergency Requests</h1>
 
+    <!-- AUTH AREA (register / login) -->
+    <section id="auth-area">
+      <h2>Account</h2>
+      <div id="authForms">
+        <div>
+          <strong>Login</strong>
+          <form id="loginForm" style="margin-top:6px;">
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </form>
+          <div id="loginResult" class="small"></div>
+        </div>
+
+        <details style="margin-top:8px;">
+          <summary>Create account (Donor or NGO)</summary>
+          <form id="registerForm" style="margin-top:6px;">
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <input name="name" placeholder="Full name or NGO name" />
+            <label style="display:block;margin-top:6px;">Role
+              <select name="role" style="display:inline-block;margin-left:8px;">
+                <option value="donor">Donor</option>
+                <option value="ngo">NGO</option>
+              </select>
+            </label>
+            <button type="submit">Register</button>
+          </form>
+          <div id="registerResult" class="small"></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Donor panel (visible only for donors) -->
+    <div id="donorPanel" style="display:none; margin-top:12px;">
+      <div><strong id="donorGreeting"></strong> • <a href="#" id="logoutBtnDonor">Logout</a></div>
+      <h3>Donor Profile</h3>
+      <form id="donorProfileForm">
+        <input name="name" placeholder="Your name" />
+        <input name="phone" placeholder="Phone" />
+        <input name="city" placeholder="City" />
+        <button type="submit">Save Profile</button>
+      </form>
+      <div id="donorProfileResult" class="small"></div>
+    </div>
+
+    <!-- NGO panel (visible only for ngos) -->
+    <div id="ngoPanel" style="display:none; margin-top:12px;">
+      <div><strong id="ngoGreeting"></strong> • <a href="#" id="logoutBtn">Logout</a></div>
+
+      <h3 style="margin-top:10px;">Create NGO Post (photo)</h3>
+      <form id="postForm" enctype="multipart/form-data">
+        <input name="title" placeholder="Title" />
+        <input name="location_text" placeholder="Location (city / hospital)" />
+        <textarea name="description" placeholder="Description"></textarea>
+        <label>Photo <input type="file" name="photo" accept="image/*" /></label>
+        <button type="submit">Upload Post</button>
+      </form>
+      <div id="postResult" class="small"></div>
+
+      <h4 style="margin-top:12px;">My Posts</h4>
+      <div id="myPosts">Loading...</div>
+    </div>
+
+    <hr style="margin:18px 0" />
+
+    <!-- Create emergency request (public) -->
     <section id="create-request">
       <h2>Create Emergency Request</h2>
       <form id="requestForm">
@@ -24,10 +91,27 @@
       <div id="requestResult"></div>
     </section>
 
-    <section id="list-requests">
+    <section id="list-requests" style="margin-top:18px;">
       <h2>Open Requests</h2>
       <div id="requestsList">Loading...</div>
     </section>
+
+    <hr style="margin:18px 0" />
+
+    <!-- Public donors -->
+    <section id="donors">
+      <h2>Registered Donors (public)</h2>
+      <div id="donorsList">Loading donors...</div>
+    </section>
+
+    <hr style="margin:18px 0" />
+
+    <!-- NGO public posts (optional) -->
+    <section id="ngo-posts">
+      <h2>NGO Posts / Donations</h2>
+      <div id="ngoPosts">Loading posts...</div>
+    </section>
+
   </main>
 
   <script src="app.js"></script>
