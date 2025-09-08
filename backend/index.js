@@ -24,6 +24,9 @@ const JWT_SECRET = process.env.JWT_SECRET || "dev_secret";
 
 const app = express();
 app.use(express.json());
+const cors = require("cors");
+app.use(cors({ origin: "*" })); // allow requests from any origin
+app.options("*", cors({ origin: "*" })); // respond to preflight requests
 
 // storage for uploads
 const UPLOAD_DIR = path.join(__dirname, "uploads");
