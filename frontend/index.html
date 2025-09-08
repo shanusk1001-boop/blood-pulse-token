@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Blood Pulse — Find Blood</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Blood Pulse — Emergency Requests</h1>
+
+    <section id="create-request">
+      <h2>Create Emergency Request</h2>
+      <form id="requestForm">
+        <input name="requester_name" placeholder="Your name" />
+        <input name="phone" placeholder="Phone" required />
+        <input name="blood_group" placeholder="Blood group (A+, B-, ...)" required />
+        <input name="city" placeholder="City" required />
+        <input name="state" placeholder="State" />
+        <textarea name="notes" placeholder="Notes"></textarea>
+        <button type="submit">Submit Request</button>
+      </form>
+      <div id="requestResult"></div>
+    </section>
+
+    <section id="list-requests">
+      <h2>Open Requests</h2>
+      <div id="requestsList">Loading...</div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
